@@ -118,8 +118,21 @@
             else if (colorChoice == 4){
                 graphics.fillStyle="white";
             }
-            graphics.fillRect(x-20,y-20,40,40);
-            graphics.strokeRect(x-20,y-20,40,40);
+            let movements = [];
+            for(let i = 0; i<6; i++){
+              movements.push([
+                20*Math.cos((i*2*Math.PI)/5),
+                20*Math.sin((i*2*Math.PI)/5),
+              ]);
+            }
+            graphics.beginPath();
+            graphics.moveTo(x+movements[0][0], y+movements[0][1]);
+            for(let i = 1; i<6; i++){
+              graphics.lineTo(x+movements[i][0], y+movements[i][1]);
+            }
+            graphics.closePath();
+            graphics.fill();
+            graphics.stroke();
 
             /*------------------------------------------------------------*/
 
